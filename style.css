@@ -1,0 +1,110 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --bg-color-pre: #f9f0e4;
+    --bg-color-post: #472901;
+    --typingSpeed: 6s;
+}
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--bg-color-pre);
+    display: grid;
+    text-align: center;
+    align-content: center;
+    font-family:'source code pro',monospace, Arial, sans-serif;
+    animation: BgClrChange var(--typingSpeed) forwards,
+                fontClrChange var(--typingSpeed) forwards;
+    color: #000;
+}
+h1{
+    margin: 20px auto;
+    position: relative;
+    width: max-content !important;
+    display: inline;
+}
+p{
+    margin: 20px;
+    font-size: 20px;
+    color: #fff;
+    opacity: 0;
+    animation: welcome 3s ease calc(var(--typingSpeed) + 2s) forwards;
+}
+h1::before,
+h1::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+h1::before{
+    background: var(--bg-color-pre);
+    animation: typewriter var(--typingSpeed) steps(31) forwards,
+    BgClrChange var(--typingSpeed);
+}
+h1::after{
+    width: 0.09em;
+    background: #000;
+    opacity: 0;
+    animation: cursorMovement var(--typingSpeed) steps(31) forwards,
+                cursorInup 1000ms steps(31) infinite,
+                crsrBgChnange var(--typingSpeed) forwards;
+}
+@keyframes typewriter
+{
+    to{
+        left: 100%;
+    }
+}
+@keyframes cursorMovement
+{
+    to{
+        left: 100%;
+    }
+}
+@keyframes cursorInup{
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes welcome {
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes BgClrChange{
+    from
+    {
+        background: var(--bg-color-pre);
+    }
+    to
+    {
+        background: var(--bg-color-post);
+    }
+}
+@keyframes fontClrChange{
+    from
+    {
+        color: #000;
+    }
+    to
+    {
+        color: #fff;
+    }
+}
+@keyframes crsrBgChnange{
+    from
+    {
+        background: #000;
+    }
+    to
+    {
+        background: #fff;
+    }
+}
